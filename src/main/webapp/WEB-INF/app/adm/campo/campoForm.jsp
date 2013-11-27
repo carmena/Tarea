@@ -4,7 +4,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title> Local </title>
+        <title> Campos Deportivos </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <%@include file="/public/header.jsp" %>
@@ -17,37 +17,53 @@
                 <%@include file="/public/menuAdm.jsp" %>
                 <div class="span9">
                     <div class="row">
-                        <h1> Nuevo Local </h1>
+                        <h1> Nuevo Campo </h1>
                     </div>
 
-                    <form action="<%=contextPath%>/adm/local/save" method="POST" class="form-horizontal">
+                    <form action="<%=contextPath%>/adm/campo/save" method="POST" class="form-horizontal">
 
-                        <input type="hidden" value="${local.id}" name="id">
+                        <input type="hidden" value="${campo.id}" name="id">
 
                         <div class="control-group">
                             <label class="control-label">Descripción</label>
                             <div class="controls">
-                                <input type="text" name="descripcion" value="${local.descripcion}">
+                                <input type="text" name="descripcion" value="${campo.descripcion}">
                             </div>
                         </div>
 
                         <div class="control-group">
-                            <label class="control-label">Dirección</label>
+                            <label class="control-label">Tipo</label>
                             <div class="controls">
-                                <input type="text" name="direccion" value="${local.direccion}">
+                                <input type="text" name="tipo" value="${campo.tipo}">
                             </div>
                         </div>
 
                         <div class="control-group">
-                            <label class="control-label">Teléfono</label>
+                            <label class="control-label">Costo Hora</label>
                             <div class="controls">
-                                <input type="text" name="telefono" value="${local.telefono}">
+                                <input type="text" name="costoHora" value="${campo.costoHora}">
                             </div>
                         </div>
 
                         <div class="control-group">
+                            <label class="control-label">local</label>
                             <div class="controls">
-                                <a class="btn" href="<%=contextPath%>/adm/local">Cancelar</a>
+                                <select type="text" name="local">
+
+                                    <c:forEach var="servL" items="${locales}">
+                                        <c:if test="${servL.id} !=null" >
+                                         
+                                            </c:if>
+                                        <option value="${servL.id}" > ${servL.descripcion}</option>
+
+                                    </c:forEach>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="controls">
+                                <a class="btn" href="<%=contextPath%>/adm/campo">Cancelar</a>
                                 <button type="submit" class="btn btn-primary">Guardar</button>
                             </div>
                         </div>

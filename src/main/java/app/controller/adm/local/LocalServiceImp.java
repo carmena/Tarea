@@ -1,6 +1,5 @@
 package app.controller.adm.local;
 
-import app.controller.adm.local.*;
 import app.dao.LocalDAO;
 import app.model.Local;
 import java.util.List;
@@ -12,6 +11,7 @@ public class LocalServiceImp implements LocalService {
 
     @Autowired
     LocalDAO localDAO;
+
 
     @Override
     public List<Local> list() {

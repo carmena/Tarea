@@ -5,5 +5,5 @@ import app.zelper.GenericCrud;
 
 
 public interface LocalService extends GenericCrud<Local>{
-    
+
 }
