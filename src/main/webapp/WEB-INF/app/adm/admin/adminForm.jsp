@@ -8,6 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <%@include file="/public/header.jsp" %>
+        <link href="<%=request.getContextPath()%>/public/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
     </head>
     <body>
         <%@include file="/public/menuGeneral.jsp" %>
@@ -20,10 +21,10 @@
                         <h1> Nuevo Administrador </h1>
                     </div>
 
-                    <form action="<%=contextPath%>/adm/admin/save" method="POST" class="form-horizontal">
+                    <form id="formulario" action="<%=contextPath%>/adm/admin/save" method="POST" class="form-horizontal">
 
                         <input type="hidden" value="${admin.id}" name="id">
-
+d
                         <div class="control-group">
                             <label class="control-label">Nombres</label>
                             <div class="controls">
@@ -84,5 +85,31 @@
             <hr>
         </div>
         <%@include file="/public/footer.jsp" %>
+         <script src="http://code.jquery.com/jquery.js"></script>
+        <script src="<%=request.getContextPath()%>/public/jvalidation/jquery.validate.min.js"></script>
+        <script src="<%=request.getContextPath()%>/public/jvalidation/messages_es.js"></script>
+        <script>
+            $(function() {
+                $('#formulario').validate({
+                    rules: {
+                        nombres: {required: true},
+                        paterno: {required: true},
+                        materno: {required: true},
+                        email: {required: true},
+                        celular: {required: true, number: true},
+                         
+                       
+                    },
+                    highlight: function(element) {
+                        $(element).closest('.control-group').removeClass('success').addClass('error');
+                    },
+                    success: function(element) {
+                        element
+                                .text('').addClass('valid')
+                                .closest('.control-group').removeClass('error').addClass('success');
+                    }
+                });
+            });
+        </script>
     </body>
 </html>

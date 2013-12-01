@@ -6,6 +6,7 @@ import app.model.Campo;
 import app.model.Local;
 import java.util.List;
 import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
@@ -17,6 +18,7 @@ public class CampoDAOH extends BaseHibernateDAO implements CampoDAO {
 
     public List<Campo> list() {
         Criteria criteria = this.getSession().createCriteria(Campo.class);
+        criteria.setFetchMode("local", FetchMode.JOIN);
         criteria.addOrder(Order.desc("descripcion"));
         criteria.addOrder(Order.asc("costoHora"));
         return criteria.list();
@@ -52,9 +54,16 @@ public class CampoDAOH extends BaseHibernateDAO implements CampoDAO {
     }
 
     public Campo getByName(String descripcion) {
-       Criteria criteria = this.getSession().createCriteria(Campo.class);
+        Criteria criteria = this.getSession().createCriteria(Campo.class);
         criteria.add(Restrictions.like("descripcion", descripcion, MatchMode.ANYWHERE));
         return (Campo) criteria.uniqueResult();
-    
+
     }
+    
+      public List<Campo> getTipo(Integer  tipo) {
+        Criteria criteria = this.getSession().createCriteria(Campo.class);
+        criteria.add(Restrictions.eq("tipo", tipo));
+        return criteria.list();
+    }
+
 }

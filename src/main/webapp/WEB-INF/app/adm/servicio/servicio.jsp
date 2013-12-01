@@ -63,6 +63,7 @@
             <hr>
         </div>
         <%@include file="/public/footer.jsp" %>
+        
     </body>
 </html>
 

@@ -1,6 +1,5 @@
 package app.controller.adm.administrador;
 
-import app.model.Local;
 import app.model.Persona;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -63,7 +62,7 @@ public class AdminController {
     public String delete(@PathVariable long id) {
 
         service.delete(new Persona(id));
-
+    
         return "redirect:/adm/admin";
     }
 }

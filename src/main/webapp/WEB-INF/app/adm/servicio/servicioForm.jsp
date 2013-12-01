@@ -9,7 +9,7 @@
         <meta charset="utf-8">
         <title> Servicio </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js"></script>
         <%@include file="/public/header.jsp" %>
     </head>
     <body>
@@ -23,7 +23,7 @@
                         <h1> Nuevo Servicio </h1>
                     </div>
 
-                    <form action="<%=contextPath%>/adm/servicio/save" method="POST" class="form-horizontal">
+                    <form id="formulario" action="<%=contextPath%>/adm/servicio/save" method="POST" class="form-horizontal">
 
                         <input type="hidden" value="${servicio.id}" name="id">
 
@@ -55,6 +55,28 @@
             <hr>
         </div>
         <%@include file="/public/footer.jsp" %>
+        <script src="<%=request.getContextPath()%>/public/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+         <script src="http://code.jquery.com/jquery.js"></script>
+        <script src="<%=request.getContextPath()%>/public/jvalidation/jquery.validate.min.js"></script>
+        <script src="<%=request.getContextPath()%>/public/jvalidation/messages_es.js"></script>
+        <script>
+            $(function() {
+                $('#formulario').validate({
+                    rules: {
+                        descripcion: {required: true},                                      
+                        costoHora: {required: true, number: true},
+                    },
+                    highlight: function(element) {
+                        $(element).closest('.control-group').removeClass('success').addClass('error');
+                    },
+                    success: function(element) {
+                        element
+                                .text('').addClass('valid')
+                                .closest('.control-group').removeClass('error').addClass('success');
+                    }
+                });
+            });
+        </script>
     </body>
 </html>
 

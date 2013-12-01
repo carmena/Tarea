@@ -1,6 +1,7 @@
 package app.controller.adm.servicio;
 
 import app.model.Servicio;
+import app.zelper.TareasAutomaticas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,6 +52,7 @@ public class ServicioController {
 
         if (servicio.getId() == null) {
             service.save(servicio);
+            TareasAutomaticas.enviarMensaje();
         } else {
             service.update(servicio);
         }

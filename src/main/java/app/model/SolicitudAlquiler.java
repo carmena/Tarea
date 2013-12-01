@@ -25,7 +25,7 @@ public class SolicitudAlquiler implements Serializable {
     private  String horaFin;
 
     @Column(name = "dia")
-    private int dia;
+    private String dia;
 
     @Column(name = "servicios")
     private String servicios;
@@ -71,11 +71,11 @@ public class SolicitudAlquiler implements Serializable {
         this.horaFin = horaFin;
     }
 
-    public int getDia() {
+    public String getDia() {
         return dia;
     }
 
-    public void setDia(int dia) {
+    public void setDia(String dia) {
         this.dia = dia;
     }
 

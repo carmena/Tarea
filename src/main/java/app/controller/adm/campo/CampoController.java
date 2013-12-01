@@ -16,10 +16,8 @@ public class CampoController {
 
     @Autowired
     CampoService service;
-
     @Autowired
     LocalDAO localDAO;
-
 
     @RequestMapping(method = RequestMethod.GET)
     public String index(Model model) {
@@ -43,15 +41,25 @@ public class CampoController {
         if (campo == null) {
             return "redirect:/adm/campo";
         }
+
         model.addAttribute("campo", campo);
+        model.addAttribute("locales", localDAO.list());
         return "adm/campo/campoForm";
     }
 
     @RequestMapping(value = "save", method = RequestMethod.POST)
     public String save(@ModelAttribute Campo campo) {
+
         if (campo.getId() == null) {
             campo.setEstado(1);
             service.save(campo);
+          
+        }
+        
+       else{
+            campo.setEstado(1);
+            service.update(campo);
+            
         }
         return "redirect:/adm/campo";
     }

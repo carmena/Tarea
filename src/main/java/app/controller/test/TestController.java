@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/socio")
+@RequestMapping("/")
 public class TestController {
     
     @Autowired
@@ -20,7 +20,7 @@ public class TestController {
     public String index(Model model) {
         model.addAttribute("servicios",service.allServicio());
         model.addAttribute("mensaje", "METODO INDEX");
-        return "test";
+        return "security/login";
     }
 
     @RequestMapping("ejemplo")

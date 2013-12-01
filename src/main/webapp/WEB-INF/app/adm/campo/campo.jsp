@@ -27,6 +27,7 @@
                             <th class="span3">Descripción</th>
                             <th>Tipo</th>
                             <th>Costo Hora</th>
+                            <th>Local</th>
                             <th>Estado</th>
                             <th> </th>
                         </tr>
@@ -35,6 +36,8 @@
                                 <td><c:out value="${serv.descripcion}"/></td>
                                 <td><c:out value="${serv.tipo}"/></td>
                                 <td><c:out value="${serv.costoHora}"/></td>
+                                <td><c:out value="${serv.local.descripcion}"/></td>
+
                                 <td>
                                     <c:if test="${serv.estado == 1}">
                                         <label class="label label-success"><c:out value="Activo"/> </label>
@@ -42,7 +45,8 @@
                                     <c:if test="${serv.estado != 1}">
                                         <label class="label label-warning"><c:out value="Inactivo"/> </label>
                                     </c:if>
-                                </td>
+                                </td>   
+
                                 <td>
                                     <div class="btn-group">
                                         <a class="dropdown-toggle" data-toggle="dropdown" role="menu"  href="#">

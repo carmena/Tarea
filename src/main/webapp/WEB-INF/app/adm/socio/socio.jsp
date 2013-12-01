@@ -8,6 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <%@include file="/public/header.jsp" %>
+
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />    
     </head>
     <body>
         <%@include file="/public/menuGeneral.jsp" %>
@@ -29,6 +31,7 @@
                             <th>Celular</th>
                             <th>Dirección</th>
                             <th>Configuracion</th>
+                            <th>Estado</th>
                             <th> </th>
                         </tr>
                         <c:forEach var="adm" items="${socios}">
@@ -37,7 +40,7 @@
                                 <td><c:out value="${adm.email}"/></td>
                                 <td><c:out value="${adm.celular}"/></td>
                                 <td><c:out value="${adm.direccion}"/></td>
-                                
+
                                 <td>
                                     <div class="btn-group">
                                         <a class="dropdown-toggle" data-toggle="dropdown" role="menu"  href="#">
@@ -54,7 +57,21 @@
                                             </li>
                                         </ul>
                                     </div>
+
                                 </td>
+                                <td>
+                                    <div id="label2-toggle-switch">
+                                        <label class="label-change-switch">
+                                            <div class="make-switch switch-small" data-on="success" data-off="danger" data-on-label="Activo" data-off-label="Inactivo">
+
+                                                <input type="checkbox" checked>
+                                            </div>
+                                        </label>
+                                    </div>
+
+                                </td>
+
+
                             </tr>
                         </c:forEach>
                     </table>
@@ -62,6 +79,8 @@
             </div>
             <hr>
         </div>
+             <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+                
         <%@include file="/public/footer.jsp" %>
     </body>
 </html>

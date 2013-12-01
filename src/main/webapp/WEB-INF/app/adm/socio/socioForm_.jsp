@@ -7,7 +7,17 @@
         <title> Administrador </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script type="text/javascript" src="public/app/js/bootstrap-select.js"></script>
+        <link rel="stylesheet" type="text/css" href="public/app/css/bootstrap-select.css">
+
+        <!-- 3.0 -->
+        <link href="public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <script src="public/bootstrap/js/bootstrap.min.js"></script>
+
+
         <%@include file="/public/header.jsp" %>
+
     </head>
     <body>
         <%@include file="/public/menuGeneral.jsp" %>
@@ -22,7 +32,7 @@
 
                     <form action="<%=contextPath%>/adm/socio/save" method="POST" class="form-horizontal">
 
-                        <input type="hidden" value="${socio.id}" name="id">
+                        <input type="hidden" value="${socio.id}" name="id"> 
 
                         <div class="control-group">
                             <label class="control-label">Nombres</label>
@@ -71,12 +81,43 @@
                         </div>
 
                         <div class="control-group">
+                            <label class="control-label">Celular</label>
+                            <div class="controls">
+                                <select class="selectpicker">
+                                    <option data-content="<span class='label label-success'>Relish</span>">Relish</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <input type="hidden" name="is_private" value="0" />
+
+                        <div class="control-group">
+                            <label class="control-label">
+                                <div class="control-group">
+                                    <div class="btn-group" data-toggle="buttons">
+
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" checked="1" > Activo
+                                        </label>
+
+
+                                    </div>
+                                </div>
+
+                            </label>
+
+                        </div> 
+
+
+                        <div class="control-group">
                             <div class="controls">
                                 <button type="submit" class="btn btn-primary">Guardar</button>
                                 <a class="btn" href="<%=contextPath%>/adm/socio">Cancelar</a>
-                                
+
                             </div>
                         </div>
+
                     </form>
 
 
@@ -84,6 +125,19 @@
             </div>
             <hr>
         </div>
+
+
         <%@include file="/public/footer.jsp" %>
+        <script type="text/javascript">
+            $(window).on('load', function() {
+
+                $('.selectpicker').selectpicker({
+                    'selectedText': 'cat'
+                });
+
+                // $('.selectpicker').selectpicker('hide');
+            });
+        </script>
+
     </body>
 </html>

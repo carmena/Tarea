@@ -20,7 +20,7 @@
                         <h1> Nuevo Campo </h1>
                     </div>
 
-                    <form action="<%=contextPath%>/adm/campo/save" method="POST" class="form-horizontal">
+                    <form id="formulario" action="<%=contextPath%>/adm/campo/save" method="POST" class="form-horizontal">
 
                         <input type="hidden" value="${campo.id}" name="id">
 
@@ -44,23 +44,40 @@
                                 <input type="text" name="costoHora" value="${campo.costoHora}">
                             </div>
                         </div>
-
+                        <%--   <div class="control-group">
+                               <label class="control-label">local</label>
+                               <div class="controls">
+                                   <input type="text" name="local.id" value="${campo.local.id}">
+                               </div>
+                           </div>
+                        --%>
                         <div class="control-group">
                             <label class="control-label">local</label>
                             <div class="controls">
-                                <select type="text" name="local">
+                                <select type="text" name="local.id">
 
-                                    <c:forEach var="servL" items="${locales}">
-                                        <c:if test="${servL.id} !=null" >
-                                         
-                                            </c:if>
-                                        <option value="${servL.id}" > ${servL.descripcion}</option>
+                                    <c:forEach var="serv" items="${locales}">
 
+                                        <%-- <option  value="${serv.id}" >  ${serv.descripcion}</option>
+                                        --%> 
+                                        <c:choose>
+                                            <c:when test="${serv.id ==campo.local.id && campo.local.id !=null }">
+                                                <option  value="${serv.id}"  selected>${serv.descripcion}</option>
+
+                                            </c:when>
+
+                                            <c:otherwise>
+                                                <option  value="${serv.id}" >  ${serv.descripcion}</option>
+
+                                            </c:otherwise>
+                                        </c:choose>
                                     </c:forEach>
 
                                 </select>
+
+
                             </div>
-                        </div>
+                        </div> 
                         <div class="control-group">
                             <div class="controls">
                                 <a class="btn" href="<%=contextPath%>/adm/campo">Cancelar</a>
@@ -74,6 +91,30 @@
             </div>
             <hr>
         </div>
+
         <%@include file="/public/footer.jsp" %>
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <script src="<%=request.getContextPath()%>/public/jvalidation/jquery.validate.min.js"></script>
+        <script src="<%=request.getContextPath()%>/public/jvalidation/messages_es.js"></script>
+        <script>
+            $(function() {
+                $('#formulario').validate({
+                    rules: {
+                        descripcion: {required: true},
+                        tipo: {required: true},
+                       
+                        costoHora: {required: true, number: true},
+                    },
+                    highlight: function(element) {
+                        $(element).closest('.control-group').removeClass('success').addClass('error');
+                    },
+                    success: function(element) {
+                        element
+                                .text('').addClass('valid')
+                                .closest('.control-group').removeClass('error').addClass('success');
+                    }
+                });
+            });
+        </script>
     </body>
 </html>

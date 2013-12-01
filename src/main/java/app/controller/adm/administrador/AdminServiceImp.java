@@ -64,6 +64,7 @@ public class AdminServiceImp implements AdminService {
 
     @Override
     public void delete(Persona t) {
+        
         personaDAO.delete(t);
     }
 }
