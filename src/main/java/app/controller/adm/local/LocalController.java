@@ -1,14 +1,17 @@
 package app.controller.adm.local;
 
-import app.controller.adm.local.*;
 import app.model.Local;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.support.ManagedMap;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("adm/local")
@@ -66,5 +69,16 @@ public class LocalController {
         service.delete(new Local(id));
 
         return "redirect:/adm/local";
+    }
+    @ResponseBody
+    @RequestMapping("activar")
+    public  Map<String, Object> activar(@RequestParam long id){
+      service.activar(id);
+       Map<String, Object> respuesta= new  ManagedMap<String, Object>();
+       respuesta.put("success",true);
+       return respuesta;
+       
+        
+        
     }
 }

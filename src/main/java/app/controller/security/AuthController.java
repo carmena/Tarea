@@ -24,6 +24,7 @@ public class AuthController {
 
         for (UsuarioRol rol : roles) {
             if (rol.getAuthority().equals(RolesEnum.ADMIN.getValue())) {
+                 
                 retorno = "redirect:/adm";
                 break;
 

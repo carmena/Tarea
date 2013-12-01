@@ -11,11 +11,7 @@
         <intercept-url pattern="/adm/**" access="hasRole('ADMIN')"/>
       
         <intercept-url pattern="/**" access="permitAll"/>
-   
         
-        
-       
-      
         <form-login
             login-page="/login"
             authentication-failure-url="/login?error=true"
