@@ -11,6 +11,7 @@
           <div class="nav-collapse collapse" style="height: 0px;">
             <p class="navbar-text pull-right">
               Autenticado como <a href="#" class="navbar-link">Usuario</a>
+              <a href="<%=contextPath%>/j_spring_security_logout"> Salir </a>
             </p>
             <!--<ul class="nav">
               <li class="active"><a href="#">Home</a></li>
